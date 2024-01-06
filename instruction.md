@@ -3,7 +3,14 @@ Library Management System
 You have to make a library management system where users can see books, borrow books, see book details, and review that book. Read the below requirements for clear understanding.
 
 Books :  (marks - 30)
-Every book has title, description,image, borrowing price, user reviews
+---------------
+Every book has 
+title, 
+description,
+image, 
+borrowing price, 
+user reviews
+----------------
 There must be some categories where user can filter books based on categories
 
 User :  ( marks - 40)
@@ -15,6 +22,6 @@ Track the borrowing date and you must show this in borrowing history report insi
 After borrowing a book, the user can review that book.
 While returning books the book borrowed amount will be given to the user. 
 
-	Deploy :  (marks - 10)
+Deploy :  (marks - 10)
 You must deploy this project on on render or your preferred platform
 	N:B : you can use function or class based views

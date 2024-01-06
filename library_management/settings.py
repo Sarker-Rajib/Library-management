@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Core',
+    'Books',
 ]
 
 MIDDLEWARE = [
@@ -33,6 +34,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'library_management.urls'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / ''
 
 TEMPLATES = [
     {
