@@ -7,16 +7,14 @@ Read the below requirements for clear understanding.
 
 Books :  (marks - 30)
 ---------------
---
 Every book has 
 title, 
 description,
 image, 
 borrowing price, 
 user reviews
---
+#
 There must be some categories where user can filter books based on categories
-----------------
 
 
 User :  ( marks - 40)
