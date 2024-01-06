@@ -34,5 +34,6 @@ While returning books the book borrowed amount will be given to the user
 
 # ----------------- #
 Deploy :  (marks - 10)
+--------------------
 You must deploy this project on on render or your preferred platform
 	N:B : you can use function or class based views
