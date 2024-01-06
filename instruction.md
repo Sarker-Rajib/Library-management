@@ -1,5 +1,6 @@
-Library Management System
-# ------------------- #
+- Library Management System -
+-------------------
+
 
 You have to make a library management system where 
 users can see books, borrow books, see book details, and review that book. 
