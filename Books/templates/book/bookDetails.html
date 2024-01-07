@@ -59,8 +59,7 @@
             </div>
             {% endfor %}
         </div>
-        {% for item in mybooks %}
-        {% if item.book.id == book.id%}
+
         <div class="mt-2 p-2 border">
             <form method="POST">
                 {% csrf_token %}
@@ -72,10 +71,7 @@
                 </button>
             </form>
         </div>
-        {% else%}
-        <p class="p-3 mt-1 bg-blue-400">Buy this book to give a review</p>
-        {% endif%}
-        {% endfor%}
+
     </div>
 
 </div>

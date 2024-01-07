@@ -25,8 +25,7 @@ class BookDetails(DetailView):
         context = super().get_context_data(**kwargs)
         all_feedback = self.object.feedbacks.all()
         review_form = FeedbackForm()
-        borrowed_books = BorrowBook.objects.filter(borrowedBy = self.request.user)
-        context['mybooks'] = borrowed_books     
+   
         context['reviews'] = all_feedback        
         context['review_form'] = review_form
         return context
