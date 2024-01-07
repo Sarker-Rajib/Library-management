@@ -24,3 +24,9 @@ class CreateUserForm(UserCreationForm):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+class DepositMoney(forms.ModelForm):
+    amount = forms.IntegerField()
+    class Meta:
+        model = UserAccount
+        fields = ['amount']

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import FormView
-from .forms import CreateUserForm
+from .forms import CreateUserForm, DepositMoney
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib import messages
@@ -12,8 +12,6 @@ class CreateUser(FormView):
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):
-        user = form.save()
-        # login(self.request, user)
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -29,3 +27,17 @@ class UserLogOUt(LogoutView):
     def get_success_url(self):
         return reverse_lazy('home')
     
+class DepositMoneyView(FormView):
+    form_class = DepositMoney
+    template_name = 'user/deposit-form.html'
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        amount = form.cleaned_data.get('amount')
+        account = self.request.user.depositAccount
+
+        account.balance += amount
+        account.save(
+            update_fields = ['balance']
+        )
+        return super().form_valid(form)
