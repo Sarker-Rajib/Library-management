@@ -2,6 +2,24 @@
 {% load static %}
 <!-- {% load static %} -->
 <!--  -->
+{% block css %}
+<style>
+    textarea {
+        width: 100%;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    label {
+        color: #fff;
+    }
+
+    input {
+        display: none;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="book-card pt-2">
     <div class="md:grid grid-cols-3 gap-6">
@@ -28,6 +46,36 @@
             <p style="font-size: 12px;">Please Login to Borrow</p>
             {% endif %}
         </div>
+    </div>
+    <div class="rounded bg-green-400 p-2 mt-4">
+        <div class="rounded p-2 bg-white">
+            <p>Give a Review</p>
+            {% for review in reviews %}
+            <div class="border p-2 mb-2">
+                <h3 class="text-xl">{{review.name}}</h3>
+                <p class="text-yellow-500">{{review.created_on}}</p>
+                <hr>
+                <p>{{review.body}}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% for item in mybooks %}
+        {% if item.book.id == book.id%}
+        <div class="mt-2 p-2 border">
+            <form method="POST">
+                {% csrf_token %}
+                {{review_form}}
+                <br>
+                <button type="submit"
+                    class="rounded text-white bg-black border hover:bg-green-400 px-6 py-2 inline-block">
+                    Submit
+                </button>
+            </form>
+        </div>
+        {% else%}
+        <p class="p-3 mt-1 bg-blue-400">Buy this book to give a review</p>
+        {% endif%}
+        {% endfor%}
     </div>
 
 </div>
