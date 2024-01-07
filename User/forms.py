@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import UserAccount
+from .models import UserAccount, BorrowBook
 
 class CreateUserForm(UserCreationForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={'id':'required'}))

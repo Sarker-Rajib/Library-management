@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--  -->
+<div class="m-auto border rounded p-4" style="max-width: 1280px;">
+    <h2 class="text-center text-2xl font-bold pb-4">Profile</h2>
+    <hr class="my-3">
+    <div class="p-2 mb-4 border">
+        <p>Name : <span class="text-xl font-bold">{{user.first_name}} {{user.last_name}}</span></p>
+        <p>Email : {{user.email}}</p>
+        <p>Balance : <span class="text-lg font-bold">{{user.depositAccount.balance}}$</span></p>
+
+    </div>
+
+    <hr class="my-4">
+
+    <div class="border p-2">
+        {% if books %}
+        <table class="w-full">
+            <thead>
+                <tr>
+                    <td class="p-2">Tr ID</td>
+                    <td class="p-2">Book Name</td>
+                    <td class="p-2">Borrow Price</td>
+                    <td class="p-2">Balance After Borrow</td>
+                    <td class="p-2">Date Borrowed</td>
+                    <td class="p-2">Status</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <td class="p-2">{{book.id}}</td>
+                    <td class="p-2">{{book.book.title}}</td>
+                    <td class="p-2">{{book.book.borrowing_price}}</td>
+                    <td class="p-2">{{book.currentBalance}}</td>
+                    <td class="p-2">{{book.timestamp}}</td>
+                    {% if book.returned %}
+                    <td>
+                        <span class="border block p-2">Book Returned <br>
+                            {{book.returnTime}}</span>
+                    </td>
+                    {% else %}
+                    <td class="p-2">
+                        <a href="{% url 'returnBook' book.id %}"
+                            class="mx-2 inline-block font-medium text-sm px-4 py-2 leading-none bg-blue-900 rounded text-white border-white hover:border-transparent hover:text-dark hover:bg-red-700 mt-4 lg:mt-0">Return
+                        </a>
+                    </td>
+                    {% endif %}
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No history / data Yet ! Thanks</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
