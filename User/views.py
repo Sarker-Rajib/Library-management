@@ -3,6 +3,7 @@ from django.views.generic import FormView
 from .forms import CreateUserForm, DepositMoney
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth import login
 from django.contrib import messages
 from Books.models import Book
 from .models import BorrowBook
@@ -16,6 +17,8 @@ class CreateUser(FormView):
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -73,7 +76,6 @@ def returnBook(request, id):
     borrowed_book.returnTime = datetime.now()
     borrowed_book.returned = True
     borrowed_book.save()
-    print(borrowed_book.returnTime)
     request.user.depositAccount.balance += price
     request.user.depositAccount.save()
     return redirect('profile')
