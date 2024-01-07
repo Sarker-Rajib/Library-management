@@ -10,6 +10,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homepage, name='home'),
+    path('books/<slug:category_slug>/',homepage, name='filterView'),
     path('user/', include('User.urls')),
     path('book/', include('Books.urls')),
 ]

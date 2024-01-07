@@ -15,7 +15,7 @@ class BorrowBook(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     borrowedBy = models.ForeignKey(User, on_delete=models.CASCADE)
     currentBalance = models.DecimalField(default=0, max_digits=12, decimal_places=2)
-    timestamp= models.DateTimeField(auto_now_add=True)
+    timestamp= models.DateTimeField()
     returned = models.BooleanField(default=False)
     returnTime = models.DateTimeField(null=True)
     

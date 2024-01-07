@@ -65,7 +65,7 @@ def borrow_book(request, id):
         return redirect(f'/book/book-details/{id}')
     
     else:
-        BorrowBook.objects.create(book=target_book, borrowedBy=request.user, currentBalance = balance - price)
+        BorrowBook.objects.create(book=target_book, borrowedBy=request.user, currentBalance = balance - price, timestamp = datetime.now())
         request.user.depositAccount.balance -= price
         request.user.depositAccount.save()
         return redirect('home')
